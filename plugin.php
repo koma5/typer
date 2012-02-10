@@ -10,15 +10,15 @@ Author URI: http://5th.ch/
 
 define( 'TYPER_PAGE_CHAR', '_' );
 
-// Kick in if the loader does not recognize a valid pattern
-yourls_add_action( 'loader_failed', 'koma5_ask_to_type' );
+// do something, if yourls doesn't recognise a valid short link
+yourls_add_action( 'loader_failed', 'typer_detect_request' );
 
-function koma5_ask_to_type($args) 
+function typer_detect_request($args) 
 {
         $request = $args[0];
         $pattern = yourls_make_regexp_pattern( yourls_get_shorturl_charset() );
         if( preg_match( "@^([$pattern]+)".TYPER_PAGE_CHAR."$@", $request, $matches ) ) {
-                $keyword   = isset( $matches[1] ) ? $matches[1] : '';
+                $keyword = isset( $matches[1] ) ? $matches[1] : '';
                 $keyword = yourls_sanitize_keyword( $keyword );
                 if( yourls_is_shorturl( $keyword ) ) {
 		        typer_show_page( $keyword );
@@ -29,11 +29,7 @@ function koma5_ask_to_type($args)
 
 function typer_show_page($keyword)
 {
-       require_once( YOURLS_INC.'/functions-html.php' );
-
-        $url   = yourls_get_keyword_longurl( $keyword );
-        $base  = YOURLS_SITE;
-        $char  = TYPER_PAGE_CHAR;
+       $urlBase  = YOURLS_SITE;
         
 echo <<<HTML
 <!DOCTYPE html>
@@ -135,7 +131,7 @@ div#blubb
   <body>
   
     <div id="blubb">
-	<h1>$base/$keyword</h1>
+	<h1>$urlBase/$keyword</h1>
     
 <p>dear lazy visitor you landed on a page were you won't be redirected automatically. The person who sent you this link may think you could yet again do something for your links. For this purpos you have to type in the short url.
 </p>
