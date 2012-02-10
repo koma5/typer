@@ -137,8 +137,9 @@ div#blubb
     <div id="blubb">
 	<h1>$base/$keyword</h1>
     
-      <p>dear lazy visitor you landed on a page were you won't be redirected til you type the URL by yourself.
-      And Bots won't be able to figure out... at least til now</p>
+<p>dear lazy visitor you landed on a page were you won't be redirected automatically. The person who sent you this link may think you could yet again do something for your links. For this purpos you have to type in the short url.
+</p>
+<p>PS: Bots won't be able to figure out... at least til now ;)</p>
     
     </div>
     
