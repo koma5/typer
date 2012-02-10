@@ -123,6 +123,11 @@ div#blubb
 	document.onclick=reEnable
 	}
 
+	window.onload = function ()
+	{
+	window.history.replaceState(null, '.', '.');
+	}
+
   
   </script>
   </head>
@@ -130,11 +135,10 @@ div#blubb
   <body>
   
     <div id="blubb">
-	<h1>$base/$keyword$char</h1>
+	<h1>$base/$keyword</h1>
     
       <p>dear lazy visitor you landed on a page were you won't be redirected til you type the URL by yourself.
-      And Bots won't be able to figure out... hmm at least til now</p>
-      
+      And Bots won't be able to figure out... at least til now</p>
     
     </div>
     
